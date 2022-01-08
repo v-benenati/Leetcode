@@ -8,31 +8,32 @@ class ListNode:
         self.next = next
 class Solution:
     def addTwoNumbers(self, l1, l2):
-        number1 = []
-        number2 = []
         ansList = None
-        nextNode = l1
-        while nextNode != None:
-            number1.append(nextNode.val)
-            nextNode = nextNode.next
+        nextNode1 = l1
+        nextNode2 = l2
+        # while nextNode != None:
+        #     number1.append(nextNode.val)
+        #     nextNode = nextNode.next
         
-        nextNode = l2
-        while nextNode != None:
-            number2.append(nextNode.val)
-            nextNode = nextNode.next
+        # nextNode = l2
+        # while nextNode != None:
+        #     number2.append(nextNode.val)
+        #     nextNode = nextNode.next
         
         remainder = 0
-        while len(number1) != 0 or len(number2) != 0:
+        while nextNode1 != None or nextNode2 != None:
             addend1 = 0
             addend2 = 0
-            if len(number1) != 0:
-                addend1 = number1.pop(0)
-            if len(number2) != 0:
-                addend2 = number2.pop(0)
+            if nextNode1 != None:
+                addend1 = nextNode1.val
+                nextNode1 = nextNode1.next
+            if nextNode2 != None:
+                addend2 = nextNode2.val
+                nextNode2 = nextNode2.next
             sum1 = addend1 + addend2
             sum1 = remainder + sum1
             remainder = int(sum1/10)
-            sum1 = sum1 - remainder*10
+            sum1 = sum1%10
             print(sum1)
             if ansList == None:
                 ansList = ListNode(sum1)
